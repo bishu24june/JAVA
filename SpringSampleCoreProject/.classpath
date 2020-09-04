@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-context-support-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-core-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-expression-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-beans-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-context-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-aspects-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-aop-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Log_Jars/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="C:/maven-3.5.0/repo/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/bcprov-jdk15-140.jar.zip"/>
+	<classpathentry kind="lib" path="C:/Jars/commons-codec-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/commons-httpclient-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/commons-httpclient-3.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/bcprov-jdk16-146.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/mysql-connector-java-5.1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-jdbc-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-tx-4.0.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-boot-1.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-boot-autoconfigure-1.4.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/Spring_Jars/spring-boot-autoconfigure-1.1.8.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

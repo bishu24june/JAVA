@@ -1,0 +1,52 @@
+The singleton scope
+
+When a bean is a singleton, only one shared instance of the bean will be managed, and all requests for beans with an id or ids matching that bean definition will result in that one specific bean instance being returned by the Spring container.
+
+To put it another way, when you define a bean definition and it is scoped as a singleton, then the Spring IoC container will create exactly one instance of the object defined by that bean definition. This single instance will be stored in a cache of such singleton beans, and all subsequent requests and references for that named bean will result in the cached object being returned.
+
+The session scope
+
+With the above bean definition in place, the Spring container will create a brand new instance of the bean , for the lifetime of a single HTTP Session.
+
+According to Spring framework reference, a different approach needs to be followed in cases where a class which "lives longer"(singleton bean in this case) needs to be injected with another class having a comparatively shorter life-span(session-scoped bean). The approach is different for prototype & singleton scope though.
+
+In your XML, what we want is that the singletonBean instance should be instantiated only once, and it should be injected with sessionBean. But since sessionBean is session-scoped(which means it should be re-instantiated for every session), the configuration is ambiguous(as the dependencies are set at instantiation time and the session scoped value can change later also).
+
+So instead of injecting with that class, its injected with a proxy that exposes the exact same public interface as sessionBean. The container injects this proxy object into the singletonBean bean, which is unaware that this sessionBean reference is a proxy. Its specified by writing this tag in the sessionBean:
+
+<aop:scoped-proxy/>
+XML Configuration:
+
+<bean name="singletonBean" class="somepkg.SingletonBean">
+<property name="someProperty" ref="sessionBean"/>
+</bean>
+
+<bean name="sessionBean" class="somepkg.SessionBean" scope="session">
+<aop:scoped-proxy/>
+</bean>
+When a singletonBean instance invokes a method on the dependency-injected sessionBean object, it actually is invoking a method on the proxy. The proxy then fetches the real sessionBean object from (in this case) the HTTP Session, and delegates the method invocation onto the retrieved real sessionBean object.
+
+Alse please refer this for more info.
+
+Singleton beans with prototype-bean dependencies
+
+Lookup Method Injection
+
+When you use singleton-scoped beans with dependencies on prototype beans, be aware that dependencies are resolved at instantiation time. Thus if you dependency-inject a prototype-scoped bean into a singleton-scoped bean, a new prototype bean is instantiated and then dependency-injected into the singleton bean. The prototype instance is the sole instance that is ever supplied to the singleton-scoped bean.
+
+However, suppose you want the singleton-scoped bean to acquire a new instance of the prototype-scoped bean repeatedly at runtime. You cannot dependency-inject a prototype-scoped bean into your singleton bean, because that injection occurs only once, when the Spring container is instantiating the singleton bean and resolving and injecting its dependencies.
+
+<!-- a stateful bean deployed as a prototype (non-singleton) -->
+<bean id="command" class="fiona.apple.AsyncCommand" scope="prototype">
+  <!-- inject dependencies here as required -->
+</bean>
+
+<!-- commandProcessor uses statefulCommandHelper -->
+<bean id="commandManager" class="fiona.apple.CommandManager">
+  <lookup-method name="createCommand" bean="command"/>
+</bean>
+Lookup method injection is the ability of the container to override methods on container managed beans, to return the lookup result for another named bean in the container. The lookup typically involves a prototype bean as in the scenario described in the preceding section. The Spring Framework implements this method injection by using bytecode generation from the CGLIB library to generate dynamically a subclass that overrides the method.
+
+Refer lookup method injection.
+
+Follow for more detailed example and information.

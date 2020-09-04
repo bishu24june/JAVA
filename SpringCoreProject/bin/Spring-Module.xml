@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+   <bean id = "helloBean" class = "com.spring.sample.program.HelloWorld">
+      <property name = "name" value = "Hello World!"/>
+   </bean>
+   
+   
+   <bean id = "customerServicePrototype" class = "com.spring.sample.program.CustomerService" scope="prototype">
+      <property name = "customerAddress" ref = "customerAddressSingleton"/>
+   </bean>
+   
+    <bean id = "customerAddressSingleton" class = "com.spring.sample.program.CustomerAddress" scope="singleton">
+      <property name = "address" value = "Navi Mumbai"/>
+   </bean>
+   
+   <bean id = "customerServiceSingleton" class = "com.spring.sample.program.CustomerService" scope="singleton">
+      <property name = "customerAddress" ref = "customerAddressPrototype"/>
+   </bean>
+   
+    <bean id = "customerAddressPrototype" class = "com.spring.sample.program.CustomerAddress" scope="prototype">
+      <property name = "address" value = "Navi Mumbai"/>
+   </bean>
+
+
+</beans>
